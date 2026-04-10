@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raman Shukla — Strategy & Business Leader</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #FFFFFF;
+      --bg2:      #F7F7F5;
+      --bg3:      #F0F0EC;
+      --navy:     #0F2744;
+      --accent:   #0F4C81;
+      --accent2:  #1A73C7;
+      --gold:     #B8922A;
+      --text:     #1A1A2E;
+      --muted:    #5C5C7A;
+      --lighter:  #8888A8;
+      --border:   #E2E2EC;
+      --border2:  #C8C8DC;
+      --shadow:   0 2px 24px rgba(15,39,68,0.07);
+      --shadow-lg:0 8px 48px rgba(15,39,68,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 5rem 5rem;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 45%;
+      height: 100%;
+      background: var(--bg2);
+      clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .hero-name span {
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .hero-tagline strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .tag {
+      padding: 0.3rem 0.85rem;
+      border: 1px solid var(--border2);
+      border-radius: 2px;
+      font-size: 0.71rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--bg);
+      transition: all 0.25s;
+    }
+
+    .tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #EAF2FB;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.5s forwards;
+    }
+
+    .btn-primary {
+      padding: 0.8rem 2rem;
+      background: var(--navy);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(15,76,129,0.25);
+    }
+
+    .btn-secondary {
+      padding: 0.8rem 2rem;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    /* Stats card */
+    .hero-stats {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .hero-stats::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 2.5rem; right: 2.5rem;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 0 0 2px 2px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 1.25rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: var(--bg2);
+      transition: border-color 0.25s;
+    }
+
+    .stat:hover { border-color: var(--accent); }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lighter);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-full {
+      max-width: 100%;
+      padding: 6rem 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-full-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5rem;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .about-text p + p { margin-top: 1.2rem; }
+
+    .about-highlight {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .about-card {
+      padding: 1.25rem 1.5rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .about-card-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--lighter);
+      margin-bottom: 0.35rem;
+    }
+
+    .about-card-value {
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2.25rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.5rem; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3.5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none; margin-bottom: 0; padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.625rem; top: 0.45rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg2);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.4rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .timeline-role {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .timeline-role span {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .timeline-period {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: #EAF2FB;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      border: 1px solid #C5DAEF;
+      white-space: nowrap;
+    }
+
+    .timeline-company {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .timeline-company::before {
+      content: '›';
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      padding-left: 1.25rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .timeline-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--accent);
+      opacity: 0.6;
+    }
+
+    .highlight-chip {
+      display: inline-block;
+      padding: 0.12rem 0.5rem;
+      background: #FDF4E7;
+      border: 1px solid #E8C87A;
+      border-radius: 2px;
+      color: var(--gold);
+      font-size: 0.77rem;
+      font-weight: 500;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      transition: all 0.25s;
+    }
+
+    .skill-category:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .skill-cat-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .skill-tag {
+      padding: 0.28rem 0.7rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: #EAF2FB;
+      border-color: #C5DAEF;
+      color: var(--accent);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s;
+    }
+
+    .edu-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .edu-card:hover::before { opacity: 1; }
+
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .edu-school {
+      font-size: 0.82rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .edu-year {
+      font-size: 0.74rem;
+      color: var(--lighter);
+    }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .cert-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: all 0.25s;
+    }
+
+    .cert-card:hover {
+      border-color: var(--accent);
+      background: #EAF2FB;
+    }
+
+    .cert-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #EAF2FB;
+      border: 1px solid #C5DAEF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .cert-name {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.25s;
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent);
+      background: #EAF2FB;
+    }
+
+    .contact-item-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: 0.68rem;
+      color: var(--lighter);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item-value {
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .contact-cta {
+      background: var(--navy);
+      border-radius: 4px;
+      padding: 3rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent2), #5AB4FF);
+    }
+
+    .contact-cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    .contact-cta-text {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .btn-white {
+      padding: 0.8rem 2rem;
+      background: #fff;
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      display: inline-block;
+      transition: all 0.25s;
+    }
+
+    .btn-white:hover {
+      background: var(--accent2);
+      color: #fff;
+    }
+
+    /* ── DIVIDER ── */
+    .divider-line {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 5rem;
+      border-top: 1px solid var(--border);
+      color: var(--lighter);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      background: var(--bg2);
+    }
+
+    footer strong { color: var(--navy); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero, section { padding: 5rem 1.5rem 3rem; }
+      .section-full-inner { padding: 0 1.5rem; }
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero::after { display: none; }
+      .skills-grid, .edu-grid, .cert-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-name { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Raman <span>Shukla</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">Strategy &amp; Business Leader</p>
+        <h1 class="hero-name">Raman<span>Shukla</span></h1>
+        <p class="hero-tagline">
+          <strong>IIT Jodhpur MBA</strong> &nbsp;·&nbsp; EV, Automotive &amp; Energy-Tech &nbsp;·&nbsp; Mumbai
+        </p>
+        <div class="hero-tags">
+          <span class="tag">Business Strategy</span>
+          <span class="tag">Go-to-Market</span>
+          <span class="tag">OEM Partnerships</span>
+          <span class="tag">EV &amp; Energy</span>
+          <span class="tag">P&amp;L Ownership</span>
+          <span class="tag">AI-Enabled Insights</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get In Touch</a>
+          <a href="#experience" class="btn-secondary">View Experience</a>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-value">~4</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">₹200Cr+</div>
+            <div class="stat-label">P&amp;L Ownership</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">₹1,000Cr+</div>
+            <div class="stat-label">Pipeline Built</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Industry Leaders</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Strategic mind.<br/>Energy sector focus.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I am a <span class="about-highlight">results-driven strategy and business professional</span> with approximately four years of progressive experience spanning the EV, automotive, and energy storage sectors. My expertise lies in sales &amp; business development strategy, revenue growth, and seamless cross-functional execution at scale.
+        </p>
+        <p>
+          In my current role as <span class="about-highlight">Strategy Manager at Geon Energy (Kolsite Group)</span>, I manage end-to-end OEM accounts with ₹200Cr+ P&amp;L responsibility, working directly alongside the Chairman's Office to drive high-impact growth and strategic expansion initiatives across India's EV battery landscape.
+        </p>
+        <p>
+          Prior to this, I spearheaded corporate strategy and market intelligence functions at <span class="about-highlight">Matter Motor Works</span> and <span class="about-highlight">Royal Enfield</span> — developing GTM frameworks for first-of-kind EV products and delivering CXO-level insights that shaped product and pricing decisions.
+        </p>
+        <p>
+          I am a practitioner of <span class="about-highlight">AI-augmented decision-making</span>, leveraging advanced GenAI and analytics tools to enhance the quality, speed, and precision of strategic outputs — from market intelligence to commercial negotiations.
+        </p>
+      </div>
+      <div class="about-sidebar">
+        <div class="about-card">
+          <div class="about-card-label">Current Role</div>
+          <div class="about-card-value">Strategy Manager · Geon Energy (Kolsite Group)</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Location</div>
+          <div class="about-card-value">Mumbai, Maharashtra, India</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Education</div>
+          <div class="about-card-value">MBA — IIT Jodhpur (2020–22)</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Open To</div>
+          <div class="about-card-value">Business Strategy · Sales Leadership · CEO's Office</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Languages</div>
+          <div class="about-card-value">English · Hindi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <div class="section-full" id="experience">
+    <div class="section-full-inner">
+      <p class="section-label">Work History</p>
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Strategy Manager <span>· Chairman's Office</span></div>
+            <span class="timeline-period">Jun 2025 – Present</span>
+          </div>
+          <div class="timeline-company">Geon Energy (Kolsite Group) — Mumbai, Maharashtra</div>
+          <ul class="timeline-bullets">
+            <li>Manage end-to-end OEM accounts across 2W, 3W, and 4W segments with <span class="highlight-chip">₹200Cr+ P&amp;L</span> responsibility, driving sustained revenue growth and strategic partnerships.</li>
+            <li>Constructed a <span class="highlight-chip">₹1,000Cr+ revenue pipeline</span> by engaging Tier-1 OEMs and expanding the business footprint in India's EV battery segment.</li>
+            <li>Architected and executed the GTM strategy for new product lines — Na-ion, auxiliary, and drone batteries — identifying incremental opportunities exceeding ₹100Cr.</li>
+            <li>Serve as a direct strategic advisor to the Chairman and Promoters on growth strategy, customer acquisition, and high-stakes commercial decisions.</li>
+            <li>Lead end-to-end commercial negotiations, BOM optimisation, and pricing strategy, materially improving deal profitability and cost efficiency.</li>
+            <li>Drive cross-functional program execution across R&amp;D, Supply Chain, and Costing teams to ensure on-time, on-budget delivery.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Corporate Strategy</div>
+            <span class="timeline-period">Apr 2024 – Jun 2025</span>
+          </div>
+          <div class="timeline-company">Matter Motor Works (EV &amp; Energy Storage Startup) — Ahmedabad, Gujarat</div>
+          <ul class="timeline-bullets">
+            <li>Conducted TAM/SAM analysis ($Mn) to evaluate new product opportunities and provide a quantitative basis for strategic decision-making.</li>
+            <li>Developed the GTM strategy for <span class="highlight-chip">AERA 5K+</span>, aligning product roadmap with competitive landscape dynamics and end-user demand signals.</li>
+            <li>Performed valuation benchmarking against EV peers, directly supporting internal strategy reviews and investor engagement.</li>
+            <li>Contributed to a successful <span class="highlight-chip">$10Mn Series B</span> fundraise through rigorous due diligence support and investor query resolution.</li>
+            <li>Collaborated with cross-functional leadership teams to track KPIs and deliver executive-ready performance insights.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Market Research &amp; Insights</div>
+            <span class="timeline-period">Jun 2022 – Apr 2024</span>
+          </div>
+          <div class="timeline-company">Royal Enfield — Gurugram, Haryana</div>
+          <ul class="timeline-bullets">
+            <li>Developed a comprehensive EV GTM strategy for European markets for Royal Enfield's first electric two-wheeler, <span class="highlight-chip">"Flying Flea"</span> — covering TAM/SAM analysis, regulatory frameworks, and government subsidies across six countries.</li>
+            <li>Delivered CXO-level insights through KPI dashboards tracking brand equity, sales performance, and digital engagement metrics.</li>
+            <li>Drove a <span class="highlight-chip">25% uplift</span> in digital customer experience scores (RSA, booking) through customer insight-led design improvements.</li>
+            <li>Led customer segmentation and NPS analysis programmes, directly influencing product and aftersales service enhancements.</li>
+            <li>Conducted primary and secondary market research for Bullet 350 and Hunter 350 launches, informing pricing architecture and positioning strategy.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Equity Research Analyst Intern</div>
+            <span class="timeline-period">Jul – Aug 2021</span>
+          </div>
+          <div class="timeline-company">ICICI Securities</div>
+          <ul class="timeline-bullets">
+            <li>Constructed comprehensive dynamic financial models utilised by institutional clients including fund managers and equity analysts.</li>
+            <li>Authored research reports grounded in valuation metrics — EBITDA multiples, price-to-earnings ratios — and DRHP analysis of chemical industry businesses.</li>
+            <li>Developed advanced Excel proficiency across macros, index-match formulations, and scenario/what-if analysis; and Tableau visualisations.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Summer Intern</div>
+            <span class="timeline-period">Apr – Jun 2021</span>
+          </div>
+          <div class="timeline-company">Tata Elxsi</div>
+          <ul class="timeline-bullets">
+            <li>Contributed to user experience design research in the Consumer Appliances domain, synthesising insights from user interviews and competitive benchmarking.</li>
+            <li>Developed trend research, buyer personas, and competitive landscape analysis, compiled into a comprehensive "Sales-Kit" for the client team.</li>
+            <li>Conducted financial statement and ratio analysis for an Apple Inc. customer analysis project.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Core Competencies</p>
+    <h2 class="section-title">Skills &amp; Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-cat-title">Strategy &amp; Business Development</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Business Strategy</span>
+          <span class="skill-tag">GTM Strategy</span>
+          <span class="skill-tag">P&amp;L Ownership</span>
+          <span class="skill-tag">Sales Planning</span>
+          <span class="skill-tag">Market Research</span>
+          <span class="skill-tag">Competitive Analysis</span>
+          <span class="skill-tag">Pricing Strategy</span>
+          <span class="skill-tag">TAM / SAM Analysis</span>
+          <span class="skill-tag">OEM Partnerships</span>
+          <span class="skill-tag">Scenario Planning</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Analytics &amp; Finance</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Financial Modelling</span>
+          <span class="skill-tag">Valuation</span>
+          <span class="skill-tag">KPI Tracking</span>
+          <span class="skill-tag">Customer Profiling</span>
+          <span class="skill-tag">NPS Analysis</span>
+          <span class="skill-tag">Qualitative &amp; Quantitative Research</span>
+          <span class="skill-tag">Industry Trend Analysis</span>
+          <span class="skill-tag">Due Diligence</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Tools &amp; Technology</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Advanced MS Excel</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Google Analytics 4</span>
+          <span class="skill-tag">Capital IQ</span>
+          <span class="skill-tag">CMIE</span>
+          <span class="skill-tag">DocSend</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Claude AI / GenAI</span>
+          <span class="skill-tag">Julius AI</span>
+          <span class="skill-tag">Canva</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Leadership &amp; Soft Skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Stakeholder Management</span>
+          <span class="skill-tag">Cross-functional Execution</span>
+          <span class="skill-tag">Executive Communication</span>
+          <span class="skill-tag">Program Management</span>
+          <span class="skill-tag">Partnership Building</span>
+          <span class="skill-tag">Strategic Thinking</span>
+          <span class="skill-tag">CXO Engagement</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Domain Expertise</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Electric Vehicles (EV)</span>
+          <span class="skill-tag">Battery Technologies</span>
+          <span class="skill-tag">Energy Storage Systems</span>
+          <span class="skill-tag">Automotive OEM</span>
+          <span class="skill-tag">Na-ion Batteries</span>
+          <span class="skill-tag">Drone Batteries</span>
+          <span class="skill-tag">Mobility &amp; Energy-Tech</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Research &amp; Market Intelligence</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Market Sizing</span>
+          <span class="skill-tag">Customer Journey Mapping</span>
+          <span class="skill-tag">Buyer Persona Development</span>
+          <span class="skill-tag">Secondary Research</span>
+          <span class="skill-tag">Customer Segmentation</span>
+          <span class="skill-tag">Business Model Analysis</span>
+          <span class="skill-tag">AI-Enabled Insights</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <div class="section-full" id="education">
+    <div class="section-full-inner">
+      <p class="section-label">Academic Background</p>
+      <h2 class="section-title">Education &amp; Certifications</h2>
+
+      <div class="edu-grid" style="margin-bottom: 3rem;">
+        <div class="edu-card">
+          <div class="edu-degree">Master of Business Administration</div>
+          <div class="edu-school">IIT Jodhpur — School of Management &amp; Entrepreneurship</div>
+          <div class="edu-year">Finance · Marketing · Technology · Strategy &nbsp;|&nbsp; 2020 – 2022</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">B.Tech — Electronics &amp; Communication Engineering</div>
+          <div class="edu-school">Kamla Nehru Institute of Technology, Sultanpur</div>
+          <div class="edu-year">2015 – 2019</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Class XI–XII — Science</div>
+          <div class="edu-school">Kendriya Vidyalaya, CBSE</div>
+          <div class="edu-year">2012 – 2014</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Class X</div>
+          <div class="edu-school">Kendriya Vidyalaya, CBSE</div>
+          <div class="edu-year">2011 – 2012</div>
+        </div>
+      </div>
+
+      <p class="section-label">Certifications</p>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon">🏆</div>
+          <div class="cert-name">Mastering LinkedIn with AI</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📈</div>
+          <div class="cert-name">FMVA — Financial Modelling &amp; Valuation Analyst</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">💡</div>
+          <div class="cert-name">Strategy Consulting Virtual Experience Programme</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🏛️</div>
+          <div class="cert-name">Financial Markets — Yale University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Let's Connect</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a href="mailto:22ramanshukla@gmail.com" class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">22ramanshukla@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+918840257072" class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-value">+91 88402 57072</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/ramanshukla-688bab134" target="_blank" rel="noopener noreferrer" class="contact-item">
+          <div class="contact-item-icon">🔗</div>
+          <div>
+            <div class="contact-item-label">LinkedIn</div>
+            <div class="contact-item-value">linkedin.com/in/ramanshukla-688bab134</div>
+          </div>
+        </a>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-value">Mumbai, Maharashtra, India</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <div class="contact-cta-title">Open to Strategic Opportunities</div>
+        <p class="contact-cta-text">
+          I am actively exploring senior roles in Business Strategy, Sales Leadership, Program Management, and CEO's Office. If you are building something significant in the EV, automotive, or clean-energy space — I would welcome a conversation.
+        </p>
+        <a href="mailto:22ramanshukla@gmail.com" class="btn-white">Send a Message →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>Raman Shukla</strong>. Strategy professional in EV &amp; Energy-Tech. Mumbai, India.</p>
+  </footer>
+
+</body>
+</html>
